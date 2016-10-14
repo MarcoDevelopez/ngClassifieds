@@ -15,7 +15,7 @@
 				name: "Marco López",
 				phone: "45545545",
 				email: "mlopez@betheltv.pe"
-			}	
+			}
 
 			$scope.openSidebar = function () {
 				$mdSidenav('left').open();
