@@ -7,7 +7,7 @@
 
 			var vm = this;
 			vm.closeSidebar = closeSidebar;
-
+			vm.saveClassified = saveClassified;
 
 			$timeout(function() {
 				$mdSidenav('left').open();
@@ -25,6 +25,19 @@
 
 			function closeSidebar() {
 				vm.sidenavOpen = false;
+			}
+
+			function saveClassified(classified) {
+				if (classified) {
+					classified.contact = {
+						name: "Marco López",
+						phone: "45545545",
+						email: "mlopez@betheltv.pe"
+					}
+
+					$scope.$emit('newClassified', classified);
+					vm.sidenavOpen = false;
+				}
 			}
 
 		});

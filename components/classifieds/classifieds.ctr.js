@@ -7,8 +7,6 @@
 		.controller("classifiedsCtrl", function ($scope, $state, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
 
 			var vm = this;
-
-			// https://school.scotch.io/getting-started-with-angularjs-1x/emitting-data?autoplay=true
 			
 			vm.categories;
 			vm.classified;
@@ -24,6 +22,12 @@
 				vm.classifieds = classifieds.data;
 				vm.categories = getCategories(vm.classifieds);
 			});
+
+			$scope.$on('newClassified', function(event, classified) {
+				classified.id = vm.classifieds.length + 1;
+				vm.classifieds.push(classified);
+				showToast('Classified saved!');
+			}); 
 
 			var contact = {
 				name: "Marco López",
@@ -50,9 +54,10 @@
 			}
 
 			function editClassified(classified) {
-				vm.editing = true;
-				openSidebar();
-				vm.classified = classified;
+				$state.go('classifieds.edit', {
+					id: classified.id,
+					classified: classified
+				});
 			}
 
 			function saveEdit() {
