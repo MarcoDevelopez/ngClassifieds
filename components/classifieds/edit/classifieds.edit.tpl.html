@@ -24,10 +24,7 @@
 				<label for="image">Image Link</label>
 				<input type="text" id="image" ng-model="vm.classified.image">
 			</md-input-container>
-			<md-button ng-if="!editing" ng-click="vm.saveClassified(classified)" class="md-primary">
-				Save
-			</md-button>
-			<md-button ng-if="editing" ng-click="vm.saveEdit()" class="md-primary">
+			<md-button ng-click="vm.saveEdit()" class="md-primary">
 				Save Edit
 			</md-button>
 			<md-button  ng-click="vm.closeSidebar()" class="md-warn">

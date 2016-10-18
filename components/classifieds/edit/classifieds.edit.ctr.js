@@ -7,7 +7,7 @@
 
 			var vm = this;
 			vm.closeSidebar = closeSidebar;
-			vm.saveClassified = saveClassified;
+			vm.saveEdit = saveEdit;
 			vm.classified = $state.params.classified;
 
 			$timeout(function() {
@@ -28,17 +28,9 @@
 				vm.sidenavOpen = false;
 			}
 
-			function saveClassified(classified) {
-				if (classified) {
-					classified.contact = {
-						name: "Marco López",
-						phone: "45545545",
-						email: "mlopez@betheltv.pe"
-					}
-
-					$scope.$emit('newClassified', classified);
-					vm.sidenavOpen = false;
-				}
+			function saveEdit() {
+				$scope.$emit('editSaved', 'Edit saved!');
+				vm.sidenavOpen = false;
 			}
 
 		});
